@@ -6,27 +6,56 @@ function computerPlay() {
 
 function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toLowerCase()
-
+    
     if (playerSelection === computerSelection) {
-        result = 'Oh no! A tie';
+        console.log('Oh no! A tie');
+        return 'tie'
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        result = 'You Win! Rock beats Scissors';
+        console.log('You Win! Rock beats Scissors');
+        return 'player';
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        result = 'You Win! Scissors beat Paper';
+        console.log('You Win! Scissors beat Paper');
+        return 'player';
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-        result = 'You Win! Paper beats Rock';
+        console.log('You Win! Paper beats Rock');
+        return 'player';
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-        result = 'You Lose! Rock beats Scissors';
+        console.log('You Lose! Rock beats Scissors');
+        return 'computer';
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
-        result = 'You Lose! Scissors beats Paper';
+        console.log('You Lose! Scissors beats Paper');
+        return 'computer';
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-        result = 'You Lose! Paper beats Rock';
+        console.log('You Lose! Paper beats Rock');
+        return 'computer';
     }
-    return result
+    
 }
 
+
+function game() {
+    
+    let result = playRound(playerSelection, computerSelection);
+    
+    
+    for (let i = 0; i < 5; i++) {
+        playRound(playerSelection, computerSelection);
+        
+        if (result === 'player') {
+            ++playerScore;
+        } else if (result === 'computer') {
+            ++computerScore
+        }
+        
+        console.log(playerScore, computerScore)
+    }
+}
+
+let playerScore = 0
+let computerScore = 0
+
+let computerSelection = computerPlay();
 const playerSelection = 'scissors';
-console.log(playerSelection.toLowerCase())
-const computerSelection = computerPlay();
-console.log(computerSelection);
-console.log(playRound(playerSelection, computerSelection))
+
+
+game();
