@@ -37,10 +37,11 @@ function playerInput() {
 
 function game() {
     
-    for (let i = 0; i < 5; i++) {
+    while (playerScore < 5 && computerScore < 5) {
         playRound(playerInput(), computerPlay());
         console.log(playerScore, computerScore)
     }
+    declareWinner()
 }
 
 function declareWinner() {
@@ -57,4 +58,4 @@ function declareWinner() {
 let playerScore = 0
 let computerScore = 0
 
-game()
+
