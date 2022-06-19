@@ -43,6 +43,17 @@ function game() {
     }
 }
 
+function declareWinner() {
+    if (playerScore > computerScore) {
+        alert('You win')
+    } else if (playerScore < computerScore) {
+        alert('Computer wins')
+    } else {
+        alert('It\'s a tie')
+    }
+}
+
+
 let playerScore = 0
 let computerScore = 0
 
