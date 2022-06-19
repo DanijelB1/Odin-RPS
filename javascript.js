@@ -1,52 +1,44 @@
 function computerPlay() {
     const rockPaperScissorsPick = ['rock', 'paper', 'scissors'];
     const valueToUse = rockPaperScissorsPick[Math.floor(Math.random() * rockPaperScissorsPick.length)]
+    console.log('Computer chose: ' + valueToUse)
     return valueToUse
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase()
-    
     if (playerSelection === computerSelection) {
         console.log('Oh no! A tie');
-        return 'tie'
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         console.log('You Win! Rock beats Scissors');
-        return 'player';
+        ++playerScore
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         console.log('You Win! Scissors beat Paper');
-        return 'player';
+        ++playerScore
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         console.log('You Win! Paper beats Rock');
-        return 'player';
+        ++playerScore
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         console.log('You Lose! Rock beats Scissors');
-        return 'computer';
+        ++computerScore
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         console.log('You Lose! Scissors beats Paper');
-        return 'computer';
+        ++computerScore
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
         console.log('You Lose! Paper beats Rock');
-        return 'computer';
+        ++computerScore
     }
-    
 }
 
+function playerInput() {
+    const ask = prompt('Rock, Paper or Scissors?');
+    console.log('You chose: ' + ask)
+    return ask
+}
 
 function game() {
     
-    let result = playRound(playerSelection, computerSelection);
-    
-    
     for (let i = 0; i < 5; i++) {
-        playRound(playerSelection, computerSelection);
-        
-        if (result === 'player') {
-            ++playerScore;
-        } else if (result === 'computer') {
-            ++computerScore
-        }
-        
+        playRound(playerInput(), computerPlay());
         console.log(playerScore, computerScore)
     }
 }
@@ -54,8 +46,4 @@ function game() {
 let playerScore = 0
 let computerScore = 0
 
-let computerSelection = computerPlay();
-const playerSelection = 'scissors';
-
-
-game();
+game()
