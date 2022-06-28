@@ -62,7 +62,7 @@ let computerScore = 0;
 let rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
     playRound ('rock', computerPlay());
-    console.log(playerScore, computerScore)
+    score.innerHTML = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
     if (playerScore === 5 || computerScore === 5) {
         declareWinner();
     }
@@ -72,7 +72,7 @@ rock.addEventListener('click', () => {
 let paper = document.querySelector('.paper');
 paper.addEventListener('click', () => {
     playRound ('paper', computerPlay());
-    console.log(playerScore, computerScore)
+    score.innerHTML = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
     if (playerScore === 5 || computerScore === 5) {
         declareWinner();
     }
@@ -82,14 +82,12 @@ paper.addEventListener('click', () => {
 let scissors = document.querySelector('.scissors');
 scissors.addEventListener('click', () => {
     playRound ('scissors', computerPlay());
-    console.log(playerScore, computerScore)
+    score.innerHTML = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
     if (playerScore === 5 || computerScore === 5) {
         declareWinner();
     }
 })
 
-// if (playerScore === 5 || computerScore === 5) {
-//     declareWinner();
-// }
-
+let score = document.querySelector('.score');
+//score.text = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
 
