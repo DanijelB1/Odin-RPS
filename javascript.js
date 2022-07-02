@@ -2,7 +2,7 @@ function computerPlay() {
     const rockPaperScissorsPick = ['rock', 'paper', 'scissors'];
     const valueToUse = rockPaperScissorsPick[Math.floor(Math.random() * rockPaperScissorsPick.length)];            
     console.log('Computer chose: ' + valueToUse);
-	computerOutput.innerText = `${valueToUse}`;
+	computerOutput.innerText = `${valueToUse}`.toUpperCase();
     return valueToUse;
 }
 
@@ -65,6 +65,7 @@ rock.addEventListener('click', () => {
     playRound ('rock', computerPlay());
     playerScoreOutput.innerHTML =`${playerScore}`;
     computerScoreOutput.innerHTML = `${computerScore}`;
+    playerOutput.innerHTML = 'ROCK';
 	if (playerScore === 5 || computerScore === 5) {
         declareWinner();
     }
@@ -76,6 +77,7 @@ paper.addEventListener('click', () => {
     playRound ('paper', computerPlay());
     playerScoreOutput.innerHTML =`${playerScore}`;
     computerScoreOutput.innerHTML = `${computerScore}`;
+    playerOutput.innerHTML = 'PAPER';
     if (playerScore === 5 || computerScore === 5) { 
     declareWinner();
     }
@@ -87,18 +89,19 @@ scissors.addEventListener('click', () => {
     playRound ('scissors', computerPlay());
     playerScoreOutput.innerHTML = `${playerScore}`;
     computerScoreOutput.innerHTML = `${computerScore}`;
+    playerOutput.innerHTML = 'SCISSORS';
     if (playerScore === 5 || computerScore === 5) {
         declareWinner();
     }
 })
 
 let playerScoreOutput = document.querySelector('.player-score');
-playerScoreOutput.text = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
 
 let computerScoreOutput = document.querySelector('.computer-score');
 
-
 let computerOutput = document.querySelector('.computer-choice');
+
+let playerOutput = document.querySelector('.player-choice');
 
 let outcome = document.querySelector('.round-outcome');
 
