@@ -2,30 +2,38 @@ function computerPlay() {
     const rockPaperScissorsPick = ['rock', 'paper', 'scissors'];
     const valueToUse = rockPaperScissorsPick[Math.floor(Math.random() * rockPaperScissorsPick.length)];            
     console.log('Computer chose: ' + valueToUse);
+	computerOutput.innerText = 'Computer chose: ' + `${valueToUse}`;
     return valueToUse;
 }
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         console.log('Oh no! A tie');
+		outcome.innerText = 'Oh no! A tie'
     } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         console.log('You Win! Rock beats Scissors');
         ++playerScore;
+		outcome.innerText = 'You Win! Rock beats Scissors';
     } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         console.log('You Win! Scissors beat Paper');
         ++playerScore;
+		outcome.innerText = 'You Win! Scissors beat Paper';
     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
         console.log('You Win! Paper beats Rock');
         ++playerScore;
+		outcome.innerText = 'You Win! Paper beats Rock';
     } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
         console.log('You Lose! Rock beats Scissors');
         ++computerScore;
+		outcome.innerText = 'You Lose! Rock beats Scissors';
     } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
         console.log('You Lose! Scissors beats Paper');
         ++computerScore;
+		outcome.innerText = 'You Lose! Scissors beats Paper';
     } else if (playerSelection === 'rock' && computerSelection === 'paper') {
         console.log('You Lose! Paper beats Rock');
         ++computerScore;
+		outcome.innerText = 'You Lose! Paper beats Rock';
     }
 }
 
@@ -35,14 +43,7 @@ function playerInput() {
     return ask
 }
 
-// function game() {                                                    //Play exactly 5 rounds
-    
-//     while (playerScore < 5 && computerScore < 5) {
-//         playRound(playerInput(), computerPlay());
-//         console.log(playerScore, computerScore);
-//     }
-//     declareWinner()
-// }
+
 
 function declareWinner() {
     if (playerScore > computerScore) {
@@ -62,8 +63,8 @@ let computerScore = 0;
 let rock = document.querySelector('.rock');
 rock.addEventListener('click', () => {
     playRound ('rock', computerPlay());
-    score.innerHTML = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
-    if (playerScore === 5 || computerScore === 5) {
+    playerScoreOutput.innerHTML =`${playerScore}`;
+	if (playerScore === 5 || computerScore === 5) {
         declareWinner();
     }
 })
@@ -72,9 +73,9 @@ rock.addEventListener('click', () => {
 let paper = document.querySelector('.paper');
 paper.addEventListener('click', () => {
     playRound ('paper', computerPlay());
-    score.innerHTML = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
-    if (playerScore === 5 || computerScore === 5) {
-        declareWinner();
+    playerScoreOutput.innerHTML =`${playerScore}`;
+    if (playerScore === 5 || computerScore === 5) { 
+    declareWinner();
     }
 })
  
@@ -82,12 +83,16 @@ paper.addEventListener('click', () => {
 let scissors = document.querySelector('.scissors');
 scissors.addEventListener('click', () => {
     playRound ('scissors', computerPlay());
-    score.innerHTML = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
+    playerScoreOutput.innerHTML = `${playerScore}`;
     if (playerScore === 5 || computerScore === 5) {
         declareWinner();
     }
 })
 
-let score = document.querySelector('.score');
-//score.text = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
+let playerScoreOutput = document.querySelector('.player-score');
+playerScoreOutput.text = 'Player score: ' + `${playerScore}` + '<br />' + 'Computer score: ' + `${computerScore}`;
+
+let computerOutput = document.querySelector('.computer-choice');
+
+let outcome = document.querySelector('.round-outcome');
 
