@@ -36,5 +36,29 @@ body {
 
 .selection-output {
     display: flex;
-    gap: 100px;
+
+.score-title {
+    padding: 30px;
+    width: 200px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.player-score,
+.computer-score {
+    padding: 30px;
+    font-size: 70px;
+    width: 200px;
+    text-align: center;
+}
+
+.computer-choice,
+.player-choice {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100px;
+    width: 100px;
+}
+
 }
